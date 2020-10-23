@@ -6,8 +6,11 @@ import 'icon_content_widget.dart';
 import 'my_card_widget.dart';
 
 const bottomContainerHeight = 80.0;
-const activeCardColor = 0xFF1D1F33;
-const bottomContainerColor = 0xFFEB1555;
+const activeCardColor = Color(0xFF1D1F33);
+const inactiveCardColor = Color(0xFF111328);
+const bottomContainerColor = Color(0xFFEB1555);
+
+enum Gender { MALE, FEMALE }
 
 class InputPage extends StatefulWidget {
   @override
@@ -15,6 +18,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,20 +36,33 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: MyCard(
-                    color: Color(activeCardColor),
-                    cardChild: IconContentWidget(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'Male',
-                    ),
-                  ),
+                      color: selectedGender == Gender.MALE
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: IconContentWidget(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'Male',
+                      ),
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.MALE;
+                        });
+                      }),
                 ),
                 Expanded(
                   child: MyCard(
-                    color: Color(activeCardColor),
+                    color: selectedGender == Gender.FEMALE
+                        ? activeCardColor
+                        : inactiveCardColor,
                     cardChild: IconContentWidget(
                       icon: FontAwesomeIcons.venus,
                       label: "Female",
                     ),
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.FEMALE;
+                      });
+                    },
                   ),
                 ),
               ],
@@ -49,7 +70,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: MyCard(
-              color: Color(activeCardColor),
+              color: activeCardColor,
             ),
           ),
           Expanded(
@@ -57,19 +78,19 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: MyCard(
-                    color: Color(activeCardColor),
+                    color: activeCardColor,
                   ),
                 ),
                 Expanded(
                   child: MyCard(
-                    color: Color(activeCardColor),
+                    color: activeCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: Color(bottomContainerColor),
+            color: bottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: bottomContainerHeight,
