@@ -1,9 +1,11 @@
-import 'package:bmi_calculator/customWidgets/RoundIconButton.dart';
+import 'package:bmi_calculator/customWidgets/round_icon_button.dart';
+import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'constants.dart';
+import 'customWidgets/bottom_button.dart';
 import 'icon_content_widget.dart';
 import 'my_card_widget.dart';
 
@@ -210,12 +212,17 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-          )
+          BottomButton(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
+            buttonTitle: 'CALCULATE',
+          ),
         ],
       ),
     );
