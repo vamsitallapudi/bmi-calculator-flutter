@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const kBottomContainerHeight = 80.0;
 const kActiveCardColor = Color(0xFF1D1F33);
-const kActiveSlideColor = Colors.white;
+const kWhiteColor = Colors.white;
 const kInactiveCardColor = Color(0xFF111328);
 const kInactiveSliderColor = Color(0xFF8D8E98);
 const kBottomContainerColor = Color(0xFFEB1555);
@@ -25,13 +25,13 @@ const kResultTextStyle = TextStyle(
 );
 const kBMITextStyle = TextStyle(
   fontSize: 100.0,
-  color: Color(0xFFFFFFFF),
+  color: kWhiteColor,
   fontWeight: FontWeight.bold,
 );
 const kBodyTextStyle = TextStyle(
   fontSize: 25.0,
-  color: Color(0xFF8D8E98),
-  fontWeight: FontWeight.bold,
+  color: kWhiteColor,
+  fontWeight: FontWeight.normal,
 );
 
 const kNumberTextStyle = TextStyle(
